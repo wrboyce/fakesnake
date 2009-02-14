@@ -2,7 +2,7 @@ import random
 
 class Faker(object):
 	def __getattr__(self, key):
-		mod = __import__(key, (), {}, ('fakesnake',), -1)
+		mod = __import__('fakesnake.%s' % key, (), {}, [key], -1)
 		return getattr(mod, key.title())()
 	
 	@staticmethod
